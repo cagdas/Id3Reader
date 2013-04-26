@@ -1,0 +1,8 @@
+
+*.properties
+
+nbproject/private/private.xml
+
+nbproject/project.xml
+
+.DS_Store
