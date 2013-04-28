@@ -14,11 +14,11 @@ require_once 'class/Id3Reader.php';
 
 
 $url = "http://205.164.35.5:80/"; //1.FM CHILLOUT LOUNGE
-$nowplaying = Id3Reader::getStreamMetadata($url);
-echo "Now playing : " . $nowplaying."\n";
+$data = Id3Reader::getStreamMetadata($url);
+echo "Now playing : " . $data['title']."\n";
 
 $url = "http://108.61.73.119:8052/"; //181.FM - 90's Alternative
-$nowplaying = Id3Reader::getStreamMetadata($url);
-echo "Now playing : " . $nowplaying."\n";
+$data = Id3Reader::getStreamMetadata($url);
+echo "Now playing : " . $data['title']."\n";
 
 

@@ -81,25 +81,35 @@ class Id3Reader {
 
 		$i = 1;
 		do {
-			fread($sock, 1); // junk data
+			fread($sock, 1); // read junk data
 		} while (++$i <= $pointLength);
 
 		// Now let's read stream meta data
 		$metadata = "";
 		$ch = "";
-		// Every metadata seperated with semicolon. We know stream title is finishing after second semicolon
-		$stopwords = 0;
-		while ($stopwords != 2) {
-			$ch = fread($sock, 1);
-			$metadata.=$ch;
-			if ($ch == ';') $stopwords++;
+		$intervals = 0;
+		while(1)
+		{
+		    $len = join(unpack('c', fgetc($sock))) * 16;
+		    if ($len > 0){
+			$metadata = str_replace("\0", '', fread($sock, $len));
+			break;
+		    }else{
+			$intervals++;
+			if ($intervals > 100) break;
+		    }
 		}
-
-		$nowplaying = "NO_STREAM_TITLE";
+		unset($data);
+		
+		$media["title"] = "NO_STREAM_TITLE";
+		$media["url"]   = "";
+		
 		if (preg_match("/StreamTitle=\'(.*)\';/siU", $metadata, $songTitle))
-			$nowplaying = $songTitle[1];
+			$media["title"] = $songTitle[1];
+		if (preg_match("/StreamUrl=\'(.*)\';/siU", $metadata, $songUrl))
+			$media["url"]  = $songUrl[1];
 
-		return $nowplaying;
+		return $media;
 	}
 
 }
