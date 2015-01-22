@@ -1,0 +1,6 @@
+language: php
+php:
+    - 5.2
+
+script: 
+    - php example.php

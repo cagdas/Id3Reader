@@ -1,4 +1,4 @@
-<?
+<?php
 /**
  * ID3Reader - The easiest way of fetching metadata from shoutcast streams 
  * 
@@ -10,8 +10,8 @@
  * Example Two
  *	181.FM - 90's Alternative - http://205.164.35.5:80/
  */
-require_once 'class/Id3Reader.php';
 
+require_once 'class/Id3Reader.php';
 
 $url = "http://205.164.35.5:80/"; //1.FM CHILLOUT LOUNGE
 $data = Id3Reader::getStreamMetadata($url);
@@ -21,4 +21,4 @@ $url = "http://108.61.73.119:8052/"; //181.FM - 90's Alternative
 $data = Id3Reader::getStreamMetadata($url);
 echo "Now playing : " . $data['title']."\n";
 
-
+?>
