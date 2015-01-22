@@ -1,4 +1,4 @@
-{<img src="https://travis-ci.org/cagdas/Id3Reader.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/cagdas/Id3Reader]
+<img src="https://travis-ci.org/cagdas/Id3Reader.svg?branch=master" alt="Build Status" />
 
 ID3Reader
 ==============
